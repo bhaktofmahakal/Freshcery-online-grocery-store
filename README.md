@@ -72,15 +72,11 @@ Freshcery-online-grocery-store/
 ### 🛒 Cart Page  
 ![Cart](image/cart.png)
 
-### 📦 Orders Page  
-![Orders](image/orders.png)
-
 ### 👤 Transactions 
 ![Transactions](image/transactions.png)
 
 ### ⚙️ Settings
 ![Settings](image/settings.png)
-
 
 ⚙️ Getting Started
 

@@ -1,4 +1,5 @@
 🛒 Freshcery: Online Grocery Store:-
+
 Freshcery is a PHP-based online grocery store that offers a seamless shopping experience for users. The platform features user authentication, product browsing, cart management, and an admin panel for efficient product and user management.
 
 🚀 Features
@@ -29,10 +30,6 @@ Architecture: Modular PHP with organized directories for assets, authentication,
 
 📁 Project Structure
 
-plaintext
-Copy
-Edit
-
 Freshcery-online-grocery-store/
 
     
@@ -51,7 +48,40 @@ Freshcery-online-grocery-store/
     ├── 404.php            # Custom 404 error page
     ├── freshcery.sql      # SQL file to set up the database
     └── README.md          # Project documentation
-    
+
+## 📸 Screenshots
+
+### 🏠 Home Page  
+![Home](image/homepage.png)
+
+### 🔐 Login Page  
+![Login](image/login.png)
+
+### 📝 Register Page  
+![Register](image/register.png)
+
+### ❓ FAQ Section  
+![FAQ](image/faq.png)
+
+### 📞 Contact Page  
+![Contact](image/contact.png)
+
+### 🛍️ Shop / Products Page  
+![Shop](image/shop.png)
+
+### 🛒 Cart Page  
+![Cart](image/cart.png)
+
+### 📦 Orders Page  
+![Orders](image/orders.png)
+
+### 👤 Transactions 
+![Transactions](image/transactions.png)
+
+### ⚙️ Settings
+![Settings](image/settings.png)
+
+
 ⚙️ Getting Started
 
 Prerequisites
@@ -64,12 +94,14 @@ Prerequisites
     Web server (e.g., Apache, Nginx)
 
 Installation:
+
 Clone the Repository;
 
     bash
     Copy
     Edit
     git clone https://github.com/bhaktofmahakal/Freshcery-online-grocery-store.git
+    
 Set Up the Database:
 
 Create a new MySQL database named freshcery.
@@ -81,11 +113,6 @@ Configure Database Connection:
 Navigate to the config/ directory.
 
 Open the database configuration file (e.g., config.php) and update the database credentials:
-
-php
-Copy
-Edit
-
 
     define('DB_SERVER', 'localhost');
     define('DB_USERNAME', 'your_username');
@@ -100,11 +127,9 @@ Start your web server and navigate to
 
     http://localhost/Freshcery-online-grocery-store/ in your browser.
 
-📸 Screenshots
-Include screenshots of the homepage, product listing, shopping cart, and admin panel here.
-
 🤝 Contributing
-Contributions are welcome! To contribute:
+
+    Contributions are welcome! To contribute:
 
 Fork the repository.
 
@@ -114,24 +139,29 @@ Create a new branch:
     Copy
     Edit
     git checkout -b feature/YourFeature
+    
 Commit your changes:
 
     bash
     Copy
     Edit
     git commit -m "Add YourFeature"
+    
 Push to the branch:
 
     bash
     Copy
     Edit
     git push origin feature/YourFeature
+    
 Open a pull request describing your changes.
 
 📄 License
-This project is licensed under the MIT License.
+
+    This project is licensed under the MIT License.
 
 📬 Contact
+
 For any inquiries or feedback, please contact 
 
     utsavmishraa005@gmail.com

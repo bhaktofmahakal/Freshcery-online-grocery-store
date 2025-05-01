@@ -83,7 +83,7 @@ Freshcery-online-grocery-store/
 Prerequisites
 
 
-    PHP 7.x or higher
+    PHP 7.2 or higher
     
     MySQL or compatible database
     

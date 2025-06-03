@@ -1,156 +1,131 @@
 # 🥦 Freshcery - AI-Driven Grocery E-Commerce Platform
 
-**Freshcery** is an advanced e-commerce system designed for seamless online grocery shopping with AI-powered customer support.
+**Freshcery** is a full-stack e-commerce platform for online grocery shopping, enhanced with AI-powered customer support. It provides users a seamless shopping experience and gives admins complete control via a secure dashboard.
+
+---
 
 ## 🚀 Features
 
-### 🧠 AI-Powered Customer Assistant
-- Gemini Pro + Ollama fallback for 24x7 AI support
-- Redis cache for instant repeated replies
-- Fully logged Q/A system (MySQL `ai_logs` table)
+### 🤖 AI-Driven Support System
+- **Gemini Pro + Ollama fallback** for 24×7 chatbot support
+- **Redis caching** for fast repeated replies
+- **MySQL `ai_logs` table** to log and analyze all user queries
 
-### 🛒 Complete E-Commerce Stack
-- Product, Cart, and Order management
-- User authentication and profile system
-- Category management with images/icons
-- Admin panel with full control over platform
+### 🛒 E-Commerce Core
+- Product listing, cart, checkout, and order tracking
+- User registration, login, and profile management
+- Admin panel with category & product control
+- Transaction log, settings, and dynamic category icons
 
-### 🛡️ Tech Stack & Security
-- PHP 7.4, MySQL (InnoDB), XAMPP
-- Redis for caching and rate limiting (planned)
-- Dockerized deployment (Ollama + Redis)
-- Password hashing, IP logging, input sanitization
+### 🔒 Security & Architecture
+- Built with **PHP 7.4 + MySQL + Redis (planned)**
+- **Input sanitization**, **password hashing**, and **IP logging**
+- **.env-based config** for API keys & credentials
+- Dockerized setup with planned Redis/Ollama container support
 
-### 📦 Deployment-Ready
-- Easily deploy on local/cloud using Docker
-- Secure .env API key handling
+---
 
+## 📦 Tech Stack
 
-📁 Project Structure
+| Layer            | Tech                                      |
+|------------------|-------------------------------------------|
+| Frontend         | HTML5, CSS3, JS, Bootstrap                |
+| Backend          | PHP 7.4 (modular + includes)              |
+| Database         | MySQL (InnoDB)                            |
+| AI Integration   | Google Gemini Pro + Ollama (Local LLM)    |
+| Caching Layer    | Redis (planned, optional via Docker)      |
+| Containerization | Docker with `render.yaml` for deployment  |
+| Web Server       | Apache (XAMPP-friendly for local)         |
 
-Freshcery-online-grocery-store/
+---
 
-    
-    ├── admin-panel/       # Admin dashboard and management tools
-    ├── assets/            # Images, stylesheets, and scripts
-    ├── auth/              # User authentication scripts
-    ├── config/            # Database configuration files
-    ├── includes/          # Reusable PHP components (e.g., header, footer)
-    ├── products/          # Product-related scripts and data
-    ├── users/             # User profile and account management
-    ├── index.php          # Homepage
-    ├── shop.php           # Main shopping page
-    ├── about.php          # About us page
-    ├── contact.php        # Contact information and form
-    ├── faq.php            # Frequently asked questions
-    ├── 404.php            # Custom 404 error page
-    ├── freshcery.sql      # SQL file to set up the database
-    └── README.md          # Project documentation
+## 📁 Folder Structure
 
-## 📸 Screenshots
-
-### 🏠 Home Page  
-![Home](image/homepage.png)
-
-### 🔐 Login Page  
-![Login](image/login.png)
-
-### 📝 Register Page  
-![Register](image/register.png)
-
-### ❓ FAQ Section  
-![FAQ](image/faq.png)
-
-### 📞 Contact Page  
-![Contact](image/contact.png)
-
-### 🛍️ Shop / Products Page  
-![Shop](image/shop.png)
-
-### 🛒 Cart Page  
-![Cart](image/cart.png)
-
-### 👤 Transactions 
-![Transactions](image/transactions.png)
-
-### ⚙️ Settings
-![Settings](image/settings.png)
-
-⚙️ Getting Started
-
-Prerequisites
+    Freshcery-online-grocery-store/
+    ├── admin-panel/        # Admin dashboard and management tools
+    ├── assets/             # Images, stylesheets, and scripts
+    ├── auth/               # User authentication scripts
+    ├── config/             # Database configuration files
+    ├── includes/           # Reusable PHP components (e.g., header, footer)
+    ├── products/           # Product-related scripts and data
+    ├── users/              # User profile and account management
+    ├── 404.php             # Custom 404 error page
+    ├── about.php           # About us page
+    ├── contact.php         # Contact information and form
+    ├── faq.php             # Frequently asked questions
+    ├── freshcery.sql       # SQL file to set up the database
+    ├── index.php           # Homepage
+    ├── shop.php            # Main shopping page
+    ├── README.md           # Project documentation
 
 
-    PHP 7.2 or higher
-    
-    MySQL or compatible database
-    
-    Web server (e.g., Apache, Nginx)
+---
 
-Installation:
+## 🖼️ Screenshots
 
-Clone the Repository;
+| Page | Preview |
+|------|---------|
+| 🏠 Home | ![Home](image/homepage.png) |
+| 🔐 Login | ![Login](image/login.png) |
+| 📝 Register | ![Register](image/register.png) |
+| ❓ FAQ | ![FAQ](image/faq.png) |
+| 📞 Contact | ![Contact](image/contact.png) |
+| 🛍️ Products | ![Shop](image/shop.png) |
+| 🛒 Cart | ![Cart](image/cart.png) |
+| 👤 Transactions | ![Transactions](image/transactions.png) |
+| ⚙️ Settings | ![Settings](image/settings.png) |
 
-    bash
-    Copy
-    Edit
-    git clone https://github.com/bhaktofmahakal/Freshcery-online-grocery-store.git
-    
-Set Up the Database:
+---
 
-Create a new MySQL database named freshcery.
+## ⚙️ Local Setup (XAMPP / Apache)
 
-Setup the freshcery.sql file located in the project root to set up the necessary tables and data.
+### 🧰 Prerequisites
 
-Configure Database Connection:
+- PHP 7.2+
+- MySQL or compatible DB
+- Apache server (XAMPP/WAMP)
 
-Navigate to the config/ directory.
+### 🪜 Installation Steps
 
-Open the database configuration file (e.g., config.php) and update the database credentials:
+# Clone the repo
+git clone https://github.com/bhaktofmahakal/Freshcery-online-grocery-store.git
 
-    define('DB_SERVER', 'localhost');
-    define('DB_USERNAME', 'your_username');
-    define('DB_PASSWORD', 'your_password');
-    define('DB_NAME', 'freshcery');
-    
-Deploy the Application:
+# Place it inside your web server's root (e.g., xampp/htdocs/)
+🛠️ Database Setup
+Open phpMyAdmin
 
-Place the project folder in your web server's root directory (e.g., htdocs for XAMPP).
+Create a database: freshcery
 
-Start your web server and navigate to
+Import freshcery.sql file from the project root
 
-    http://localhost/Freshcery-online-grocery-store/ in your browser.
+🔐 Config Environment
+Edit the file: config/config.php
+
+
+define('DB_SERVER', 'localhost');
+define('DB_USERNAME', 'root');       // or your MySQL user
+define('DB_PASSWORD', '');           // your password if any
+define('DB_NAME', 'freshcery');
+▶️ Run the App
+Open in browser:
+
+http://localhost/Freshcery-online-grocery-store/
+
 
 🤝 Contributing
+Fork this repo
 
-    Contributions are welcome! To contribute:
+Create a branch git checkout -b feature/YourFeature
 
-Fork the repository.
+Make changes and commit git commit -m "Added YourFeature"
 
-Create a new branch:
+Push your branch git push origin feature/YourFeature
 
-    git checkout -b feature/YourFeature
-    
-Commit your changes:
-
-  
-    git commit -m "Add YourFeature"
-    
-Push to the branch:
-
-   
-    git push origin feature/YourFeature
-    
-Open a pull request describing your changes.
+Submit a Pull Request 🚀
 
 📄 License
-
-    This project is licensed under the MIT License.
+This project is licensed under the MIT License.
 
 📬 Contact
-
-For any inquiries or feedback, please contact 
-
-    utsavmishraa005@gmail.com
-
+Maintained by Utsav Mishra
 

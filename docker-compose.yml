@@ -1,0 +1,25 @@
+services:
+  redis:
+    image: redis:latest
+    container_name: freshcery-redis
+    ports:
+      - "6379:6379"
+    restart: always
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+      
+  ollama:
+    image: ollama/ollama
+    container_name: freshcery-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: always
+    environment:
+      - OLLAMA_HOST=0.0.0.0
+      
+volumes:
+  redis_data:
+  ollama_data:

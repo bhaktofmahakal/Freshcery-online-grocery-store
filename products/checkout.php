@@ -2,7 +2,7 @@
 
     if(!isset($_SERVER['HTTP_REFERER'])){
         // redirect them to your desired location
-        header('location: http://localhost/freshcery/index.php');
+        header('location: http://localhost/Freshcery/index.php');
         exit;
     }
 
@@ -11,35 +11,40 @@
 <?php require "../config/config.php"; ?>
 <?php 
     if(!isset($_SESSION['username'])) {
-                
         echo "<script> window.location.href='".APPURL."'; </script>";
-
     }
-
-
-
 
     $products = $conn->query("SELECT * FROM cart WHERE user_id='$_SESSION[user_id]'");
     $products->execute();
 
     $allProducts = $products->fetchAll(PDO::FETCH_OBJ);
 
-    if(isset($_SESSION['price'])) {
-        $_SESSION['total_price'] = $_SESSION['price'] + 20;
+    // Initialize price variables
+    $shipping_cost = 20;
+    $total_price = 0;
+    $cart_subtotal = 0;
+
+    // Calculate cart subtotal from products
+    foreach($allProducts as $product) {
+        $cart_subtotal += floatval($product->pro_price) * intval($product->pro_qty);
     }
 
-    if(isset($_POST['submit'])) {
+    // Set session price if not set
+    if(!isset($_SESSION['price']) || empty($_SESSION['price'])) {
+        $_SESSION['price'] = $cart_subtotal;
+    }
 
+    // Calculate total price
+    $total_price = floatval($_SESSION['price']) + $shipping_cost;
+    $_SESSION['total_price'] = $total_price;
+
+    if(isset($_POST['submit'])) {
         if(empty($_POST['name']) OR empty($_POST['lname']) OR empty($_POST['company_name'])
         OR empty($_POST['address']) OR empty($_POST['city']) OR empty($_POST['country'])
         OR empty($_POST['zip_code']) OR empty($_POST['email']) OR empty($_POST['phone_number'])
         OR empty($_POST['order_notes'])) {
-
             echo "<script>alert('one or more inputs are empty')</script>";
-
         } else {
-
-
             $name = $_POST['name'];
             $lname = $_POST['lname'];
             $company_name = $_POST['company_name'];
@@ -50,11 +55,11 @@
             $email = $_POST['email'];
             $phone_number = $_POST['phone_number'];
             $order_notes = $_POST['order_notes'];
-            $price = $_SESSION['total_price'];
+            $price = floatval($_SESSION['total_price']);
             $user_id = $_SESSION['user_id'];
 
             $insert = $conn->prepare("INSERT INTO orders(name, lname, company_name, address, city,
-           country, zip_code, email, phone_number, order_notes,  price, user_id)
+           country, zip_code, email, phone_number, order_notes, price, user_id)
             VALUES(:name, :lname, :company_name, :address, :city, :country, :zip_code, :email, :phone_number,
             :order_notes, :price, :user_id)");
 
@@ -74,12 +79,8 @@
             ]);
 
             echo "<script> window.location.href='".APPURL."/products/charge.php'; </script>";
-
         }
     }
-
-
-
 ?>
     <div id="page-content" class="page-content">
         <div class="banner">
@@ -105,44 +106,42 @@
                             <fieldset>
                                 <div class="form-group row">
                                     <div class="col">
-                                        <input class="form-control" placeholder="Name" type="text" name="name">
+                                        <input class="form-control" placeholder="Name" type="text" name="name" required>
                                     </div>
                                     <div class="col">
-                                        <input class="form-control" placeholder="Last Name" type="text" name="lname">
+                                        <input class="form-control" placeholder="Last Name" type="text" name="lname" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Company Name" type="text" name="company_name">
+                                    <input class="form-control" placeholder="Company Name" type="text" name="company_name" required>
                                 </div>
                                 <div class="form-group">
-                                    <textarea class="form-control" name="address" placeholder="Address"></textarea>
+                                    <textarea class="form-control" name="address" placeholder="Address" required></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" name="city" placeholder="Town / City" type="text">
+                                    <input class="form-control" name="city" placeholder="Town / City" type="text" required>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" name="country" placeholder="State / Country" type="text">
+                                    <input class="form-control" name="country" placeholder="State / Country" type="text" required>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" name="zip_code" placeholder="Postcode / Zip" type="text">
+                                    <input class="form-control" name="zip_code" placeholder="Postcode / Zip" type="text" required>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col">
-                                        <input class="form-control" name="email" placeholder="Email Address" type="email">
+                                        <input class="form-control" name="email" placeholder="Email Address" type="email" required>
                                     </div>
                                     <div class="col">
-                                        <input class="form-control" name="phone_number" placeholder="Phone Number" type="tel">
+                                        <input class="form-control" name="phone_number" placeholder="Phone Number" type="tel" required>
                                     </div>
                                 </div>
                               
                                 <div class="form-group">
-                                    <textarea class="form-control" name="order_notes" placeholder="Order Notes"></textarea>
+                                    <textarea class="form-control" name="order_notes" placeholder="Order Notes" required></textarea>
                                 </div>
                             </fieldset>
                             <button name="submit" type="submit" class="btn btn-primary float-left">PROCEED TO CHECKOUT <i class="fa fa-check"></i></button>
-
                         </form>
-                        <!-- Bill Detail of the Page end -->
                     </div>
                     <div class="col-xs-12 col-sm-5">
                         <div class="holder">
@@ -159,14 +158,13 @@
                                         <?php foreach($allProducts as $product) : ?>
                                             <tr>
                                                 <td>
-                                                    <?php echo $product->pro_title; ?> x<?php echo $product->pro_qty; ?>
+                                                    <?php echo htmlspecialchars($product->pro_title); ?> x<?php echo htmlspecialchars($product->pro_qty); ?>
                                                 </td>
                                                 <td class="text-right">
-                                                    USD <?php echo $product->pro_price; ?>
+                                                    USD <?php echo number_format(floatval($product->pro_price) * intval($product->pro_qty), 2); ?>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
-                                       
                                     </tbody>
                                     <tfooter>
                                         <tr>
@@ -174,9 +172,7 @@
                                                 <strong>Cart Subtotal</strong>
                                             </td>
                                             <td class="text-right">
-                                                <?php if(isset($_SESSION['price'])) : ?>
-                                                    USD <?php echo $_SESSION['price']; ?>
-                                                <?php endif; ?>
+                                                USD <?php echo number_format($cart_subtotal, 2); ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -184,7 +180,7 @@
                                                 <strong>Shipping</strong>
                                             </td>
                                             <td class="text-right">
-                                                USD 20
+                                                USD <?php echo number_format($shipping_cost, 2); ?>
                                             </td>
                                         </tr>
                                         <tr>
@@ -192,19 +188,13 @@
                                                 <strong>ORDER TOTAL</strong>
                                             </td>
                                             <td class="text-right">
-                                                <strong>USD <?php echo $_SESSION['price'] + 20; ?></strong>
+                                                <strong>USD <?php echo number_format($total_price, 2); ?></strong>
                                             </td>
                                         </tr>
                                     </tfooter>
                                 </table>
                             </div>
-
-                         
                         </div>
-                        <!-- <p class="text-right mt-3">
-                            <input checked="" type="checkbox"> I’ve read &amp; accept the <a href="#">terms &amp; conditions</a>
-                        </p> -->
-                        <div class="clearfix">
                     </div>
                 </div>
             </div>

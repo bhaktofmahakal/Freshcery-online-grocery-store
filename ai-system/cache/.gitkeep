@@ -1,0 +1,2 @@
+# File-based cache directory for Freshcery AI System
+# Used when Redis is not available

@@ -1,0 +1,15 @@
+RewriteEngine On
+RewriteBase /Freshcery/users/
+
+# Allow direct access to PHP files
+<FilesMatch "\.php$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>
+
+# Prevent directory listing
+Options -Indexes
+
+# Handle errors
+ErrorDocument 404 /Freshcery/404.php
+ErrorDocument 403 /Freshcery/404.php 

@@ -1,7 +1,9 @@
 <?php 
 
-  session_start();
-  define("ADMINURL", "http://localhost/freshcery/admin-panel");
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+define("ADMINURL", "http://localhost/freshcery/admin-panel");
 
 ?>
 
@@ -47,6 +49,15 @@
 
             <li class="nav-item">
               <a class="nav-link" href="<?php echo ADMINURL; ?>/orders-admins/show-orders.php" style="margin-left: 20px;">Orders</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo ADMINURL; ?>/ai-logs/ai-logs.php" style="margin-left: 20px;">AI Logs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo ADMINURL; ?>/health-monitor/health-dashboard.php" style="margin-left: 20px;">Health Monitor</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo ADMINURL; ?>/backup-manager/backup-dashboard.php" style="margin-left: 20px;">Backup Manager</a>
             </li>
           
           </ul>

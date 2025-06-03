@@ -264,3 +264,26 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+-- Freshcery AI Logs Table
+-- Run this in phpMyAdmin or MySQL command line
+
+CREATE TABLE IF NOT EXISTS ai_logs (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  prompt TEXT NOT NULL,
+  response TEXT,
+  source ENUM('gemini', 'ollama', 'cache') NOT NULL,
+  ip_address VARCHAR(45),
+  user_id INT DEFAULT NULL,
+  processing_time DECIMAL(10,3) DEFAULT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  INDEX idx_source (source),
+  INDEX idx_created_at (created_at),
+  INDEX idx_user_id (user_id)
+);
+
+-- Insert sample data for testing
+INSERT INTO ai_logs (prompt, response, source, ip_address, processing_time) VALUES
+('What are your store hours?', 'We are open 24/7 online! Our delivery service operates from 6 AM to 11 PM daily.', 'gemini', '127.0.0.1', 1.234),
+('Do you deliver fresh vegetables?', 'Yes! We deliver farm-fresh vegetables daily. All our produce is sourced directly from local farms.', 'gemini', '127.0.0.1', 0.987),
+('What payment methods do you accept?', 'We accept all major credit cards, PayPal, and cash on delivery.', 'cache', '127.0.0.1', 0.001);

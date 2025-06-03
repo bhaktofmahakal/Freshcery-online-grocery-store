@@ -11,6 +11,12 @@
     // }
 
     if(isset($_POST['submit'])) {
+        
+        // Check if user is logged in
+        if(!isset($_SESSION['user_id'])) {
+            echo "<script>alert('Please login first to add products to cart'); window.location.href='".APPURL."/auth/login.php';</script>";
+            exit;
+        }
 
         $pro_id = $_POST['pro_id'];
         $pro_title = $_POST['pro_title'];
@@ -20,20 +26,38 @@
         $pro_subtotal = $_POST['pro_subtotal'];
         $user_id = $_POST['user_id'];
 
-        $insert = $conn->prepare("INSERT INTO cart (pro_id, pro_title, pro_image, pro_price,
-        pro_qty, pro_subtotal, user_id) VALUES (:pro_id, :pro_title, :pro_image, :pro_price, :pro_qty, :pro_subtotal, :user_id)");
+        try {
+            // Check if product already exists in cart
+            $checkExisting = $conn->prepare("SELECT * FROM cart WHERE pro_id = :pro_id AND user_id = :user_id");
+            $checkExisting->execute([':pro_id' => $pro_id, ':user_id' => $user_id]);
+            
+            if($checkExisting->rowCount() > 0) {
+                // Update quantity if product already exists
+                $updateCart = $conn->prepare("UPDATE cart SET pro_qty = pro_qty + :pro_qty, pro_subtotal = pro_price * (pro_qty + :pro_qty) WHERE pro_id = :pro_id AND user_id = :user_id");
+                $updateCart->execute([
+                    ':pro_qty' => $pro_qty,
+                    ':pro_id' => $pro_id,
+                    ':user_id' => $user_id
+                ]);
+                echo "<script>alert('Product quantity updated in cart!');</script>";
+            } else {
+                // Insert new product to cart
+                $insert = $conn->prepare("INSERT INTO cart (pro_id, pro_title, pro_image, pro_price, pro_qty, pro_subtotal, user_id) VALUES (:pro_id, :pro_title, :pro_image, :pro_price, :pro_qty, :pro_subtotal, :user_id)");
 
-        $insert->execute([
-            ':pro_id' => $pro_id,
-            ':pro_title' => $pro_title,
-            ':pro_image' => $pro_image,
-            ':pro_price' => $pro_price,
-            ':pro_qty' => $pro_qty,
-            ':pro_subtotal' => $pro_subtotal,
-            ':user_id' => $user_id,
-        ]);
-
-
+                $insert->execute([
+                    ':pro_id' => $pro_id,
+                    ':pro_title' => $pro_title,
+                    ':pro_image' => $pro_image,
+                    ':pro_price' => $pro_price,
+                    ':pro_qty' => $pro_qty,
+                    ':pro_subtotal' => $pro_subtotal,
+                    ':user_id' => $user_id,
+                ]);
+                echo "<script>alert('Product added to cart successfully!');</script>";
+            }
+        } catch(PDOException $e) {
+            echo "<script>alert('Error adding product to cart: " . $e->getMessage() . "');</script>";
+        }
     }
 
     if(isset($_GET['id'])) {
@@ -133,7 +157,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-sm-5">
-                                    <input class="form-control" type="hidden"  name="user_id" value="<?php echo $_SESSION['user_id']; ?>" >
+                                    <input class="form-control" type="hidden"  name="user_id" value="<?php echo isset($_SESSION['user_id']) ? $_SESSION['user_id'] : ''; ?>" >
                                 </div>
                             </div>
                             <div class="row">
@@ -235,17 +259,38 @@
             $(".btn-insert").on("click", function(e) {
                 e.preventDefault();
 
+                // Check if user is logged in
+                <?php if(!isset($_SESSION['user_id'])): ?>
+                    alert("Please login first to add products to cart");
+                    window.location.href = "<?php echo APPURL; ?>/auth/login.php";
+                    return;
+                <?php endif; ?>
+
                 var form_data = $("#form-data").serialize()+'&submit=submit';
+                
+                // Disable button to prevent double submission
+                $(".btn-insert").prop("disabled", true).html("<i class='fa fa-spinner fa-spin'></i> Adding...");
 
                 $.ajax({
                     url: "detail-product.php?id=<?php echo $id; ?>",
                     method: "post",
                     data: form_data,
 
-                    success: function(){
-                        alert("product added to cart");
+                    success: function(response){
+                        alert("Product added to cart successfully!");
                         $(".btn-insert").html("<i class='fa fa-shopping-basket'></i> Added to Cart").prop("disabled", true);
-                        withRef();
+                        
+                        // Update cart count in header
+                        updateCartCount();
+                        
+                        // Refresh page to show updated state
+                        setTimeout(function() {
+                            withRef();
+                        }, 1000);
+                    },
+                    error: function(xhr, status, error) {
+                        alert("Error adding product to cart. Please try again.");
+                        $(".btn-insert").prop("disabled", false).html("<i class='fa fa-shopping-basket'></i> Add to Cart");
                     }
                 });
 
@@ -254,6 +299,17 @@
 
             function withRef() {
                 $("body").load("detail-product.php?id=<?php echo $id; ?>");
+            }
+            
+            function updateCartCount() {
+                // Update cart count in header
+                $.ajax({
+                    url: "<?php echo APPURL; ?>/products/get-cart-count.php",
+                    method: "GET",
+                    success: function(count) {
+                        $(".badge-primary").text(count);
+                    }
+                });
             }
 
             $(".pro_qty").mouseup(function () {

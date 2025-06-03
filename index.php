@@ -6,7 +6,6 @@
     $categories->execute();
 
     $allCategories = $categories->fetchAll(PDO::FETCH_OBJ);
-
 ?>
     <div id="page-content" class="page-content">
         <div class="banner">

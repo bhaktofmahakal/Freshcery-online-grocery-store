@@ -1,32 +1,30 @@
-🛒 Freshcery: Online Grocery Store:-
+# 🥦 Freshcery - AI-Driven Grocery E-Commerce Platform
 
-Freshcery is a PHP-based online grocery store that offers a seamless shopping experience for users. The platform features user authentication, product browsing, cart management, and an admin panel for efficient product and user management.
+**Freshcery** is an advanced e-commerce system designed for seamless online grocery shopping with AI-powered customer support.
 
-🚀 Features
+## 🚀 Features
 
-    User Authentication: Secure login and registration system.
-    
-    Product Catalog: Browse a wide range of grocery items with detailed descriptions.
-    
-    Shopping Cart: Add, update, or remove items from the cart.
-    
-    Admin Panel: Manage products, categories, and user information.
-    
-    Responsive Design: Optimized for desktops, tablets, and mobile devices.
-    
-    Contact & FAQ Pages: Dedicated pages for customer support and frequently asked questions.
+### 🧠 AI-Powered Customer Assistant
+- Gemini Pro + Ollama fallback for 24x7 AI support
+- Redis cache for instant repeated replies
+- Fully logged Q/A system (MySQL `ai_logs` table)
 
-🛠️ Tech Stack
+### 🛒 Complete E-Commerce Stack
+- Product, Cart, and Order management
+- User authentication and profile system
+- Category management with images/icons
+- Admin panel with full control over platform
 
-    Frontend: HTML5, SCSS/CSS3, JavaScript
-    
-    Backend: PHP
-    
-    Database: MySQL (import freshcery.sql)
-    
-    Version Control: Git
+### 🛡️ Tech Stack & Security
+- PHP 7.4, MySQL (InnoDB), XAMPP
+- Redis for caching and rate limiting (planned)
+- Dockerized deployment (Ollama + Redis)
+- Password hashing, IP logging, input sanitization
 
-Architecture: Modular PHP with organized directories for assets, authentication, configuration, and more.
+### 📦 Deployment-Ready
+- Easily deploy on local/cloud using Docker
+- Secure .env API key handling
+
 
 📁 Project Structure
 

@@ -66,17 +66,7 @@
 
 ## 🖼️ Screenshots
 
-| Page | Preview |
-|------|---------|
-| 🏠 Home | ![Home](image/homepage.png) |
-| 🔐 Login | ![Login](image/login.png) |
-| 📝 Register | ![Register](image/register.png) |
-| ❓ FAQ | ![FAQ](image/faq.png) |
-| 📞 Contact | ![Contact](image/contact.png) |
-| 🛍️ Products | ![Shop](image/shop.png) |
-| 🛒 Cart | ![Cart](image/cart.png) |
-| 👤 Transactions | ![Transactions](image/transactions.png) |
-| ⚙️ Settings | ![Settings](image/settings.png) |
+<p float="left"> <img src="image/homepage.png" width="30%" /> <img src="image/login.png" width="30%" /> <img src="image/register.png" width="30%" /> </p> <p float="left"> <img src="image/faq.png" width="30%" /> <img src="image/contact.png" width="30%" /> <img src="image/shop.png" width="30%" /> </p> <p float="left"> <img src="image/cart.png" width="30%" /> <img src="image/transactions.png" width="30%" /> <img src="image/settings.png" width="30%" /> </p>
 
 ---
 

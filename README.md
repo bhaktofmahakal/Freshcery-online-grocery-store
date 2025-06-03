@@ -129,23 +129,16 @@ Fork the repository.
 
 Create a new branch:
 
-    bash
-    Copy
-    Edit
     git checkout -b feature/YourFeature
     
 Commit your changes:
 
-    bash
-    Copy
-    Edit
+  
     git commit -m "Add YourFeature"
     
 Push to the branch:
 
-    bash
-    Copy
-    Edit
+   
     git push origin feature/YourFeature
     
 Open a pull request describing your changes.

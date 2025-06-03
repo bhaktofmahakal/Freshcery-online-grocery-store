@@ -81,54 +81,70 @@
 
 ### 🧰 Prerequisites
 
-- PHP 7.2+
-- MySQL or compatible DB
-- Apache server (XAMPP/WAMP)
+    - PHP 7.2+
+    - MySQL or compatible DB
+    - Apache server (XAMPP/WAMP)
 
 ### 🪜 Installation Steps
 
 # Clone the repo
-git clone https://github.com/bhaktofmahakal/Freshcery-online-grocery-store.git
+
+    git clone https://github.com/bhaktofmahakal/Freshcery-online-grocery-store.git
 
 # Place it inside your web server's root (e.g., xampp/htdocs/)
-🛠️ Database Setup
-Open phpMyAdmin
 
-Create a database: freshcery
-
-Import freshcery.sql file from the project root
+    Open phpMyAdmin
+    
+    Create a database: freshcery
+    
+    Import freshcery.sql file from the project root
 
 🔐 Config Environment
-Edit the file: config/config.php
 
-define('DB_SERVER', 'localhost');
+Edit the file: 
 
-define('DB_USERNAME', 'root');       // or your MySQL user
-
-define('DB_PASSWORD', '');           // your password if any
-
-define('DB_NAME', 'freshcery');
+    config/config.php
+    
+    define('DB_SERVER', 'localhost');
+    
+    define('DB_USERNAME', 'root');       // or your MySQL user
+    
+    define('DB_PASSWORD', '');           // your password if any
+    
+    define('DB_NAME', 'freshcery');
 
 ▶️ Run the App
+
 Open in browser:
 
-http://localhost/Freshcery-online-grocery-store/
+    http://localhost/Freshcery-online-grocery-store/
 
 
 🤝 Contributing
+
 Fork this repo
 
-Create a branch git checkout -b feature/YourFeature
-
-Make changes and commit git commit -m "Added YourFeature"
-
-Push your branch git push origin feature/YourFeature
-
-Submit a Pull Request 🚀
+    Create a branch git checkout -b feature/YourFeature
+    
+    Make changes and commit git commit -m "Added YourFeature"
+    
+    Push your branch git push origin feature/YourFeature
+    
+    Submit a Pull Request 🚀
 
 📄 License
-This project is licensed under the MIT License.
+
+    This project is licensed under the MIT License.
 
 📬 Contact
-Maintained by Utsav Mishra
 
+    Maintained by Utsav Mishra
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Built%20with-PHP-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="Built with PHP">
+  <img src="https://img.shields.io/badge/Database-MySQL-00758F?style=for-the-badge&logo=mysql&logoColor=white" alt="Database - MySQL">
+  <img src="https://img.shields.io/badge/AI%20Assistant-Gemini%20Pro-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Gemini Pro AI">
+  <img src="https://img.shields.io/badge/AI%20Fallback-Ollama-222222?style=for-the-badge&logo=OpenAI&logoColor=white" alt="Ollama AI">
+  <img src="https://img.shields.io/badge/Caching-Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white" alt="Redis">
+  <img src="https://img.shields.io/badge/Deployment-Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker">
+</p>

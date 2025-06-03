@@ -101,11 +101,14 @@ Import freshcery.sql file from the project root
 🔐 Config Environment
 Edit the file: config/config.php
 
-
 define('DB_SERVER', 'localhost');
+
 define('DB_USERNAME', 'root');       // or your MySQL user
+
 define('DB_PASSWORD', '');           // your password if any
+
 define('DB_NAME', 'freshcery');
+
 ▶️ Run the App
 Open in browser:
 

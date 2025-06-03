@@ -149,5 +149,5 @@ Fork this repo
   <img src="https://img.shields.io/badge/AI%20Assistant-Gemini%20Pro-4285F4?style=for-the-badge&logo=google&logoColor=white" alt="Gemini Pro AI">
   <img src="https://img.shields.io/badge/AI%20Fallback-Ollama-222222?style=for-the-badge&logo=OpenAI&logoColor=white" alt="Ollama AI">
   <img src="https://img.shields.io/badge/Caching-Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white" alt="Redis">
-  <img src="https://img.shields.io/badge/Deployment-Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker">
+  <img src="https://img.shields.io/badge/Deployment-Docker-2496ED?style=for-the-badge&logo=docker&logoColor=black" alt="Docker">
 </p>

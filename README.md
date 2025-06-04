@@ -131,7 +131,7 @@ Open in browser:
     http://localhost/Freshcery-online-grocery-store/
 
 
-<details>
+</details>
 
 🤝 Contributing
 

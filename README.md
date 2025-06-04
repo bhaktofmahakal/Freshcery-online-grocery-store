@@ -64,9 +64,25 @@
 
 ---
 
-## 🖼️ Screenshots
 
-<p float="left"> <img src="image/homepage.png" width="30%" /> <img src="image/login.png" width="30%" /> <img src="image/register.png" width="30%" /> </p> <p float="left"> <img src="image/faq.png" width="30%" /> <img src="image/contact.png" width="30%" /> <img src="image/shop.png" width="30%" /> </p> <p float="left"> <img src="image/cart.png" width="30%" /> <img src="image/transactions.png" width="30%" /> <img src="image/settings.png" width="30%" /> </p>
+## 📸 Project Screenshots
+
+| Page/Section           | Screenshot                                   | Description                                |
+|------------------------|----------------------------------------------|--------------------------------------------|
+| ⚙️ Admin AI             | ![Admin AI](image/admin-ai.png)              | Admin AI dashboard and features             |
+| 💾 Admin Backup         | ![Admin Backup](image/admin-backup.png)      | Backup management and restore system        |
+| 🩺 Admin System Health  | ![Admin System Health](image/admin-system-health.png) | System monitoring and health overview        |
+| 🤖 AI Assistant         | ![AI Assistant](image/ai-assistant.png)      | AI-powered assistant interface               |
+| 🛒 Cart                 | ![Cart](image/cart.png)                       | Shopping cart page                           |
+| 📩 Contact              | ![Contact](image/contact.png)                 | Contact form page                            |
+| ❓ FAQ                  | ![FAQ](image/faq.png)                         | Frequently asked questions page              |
+| 🏠 Homepage             | ![Homepage](image/homepage.png)               | Main landing/homepage                        |
+| 🔐 Login                | ![Login](image/login.png)                     | User login page                             |
+| 📦 Orders               | ![Orders](image/orders.png)                   | Order management and history page            |
+| ⚙️ Setting              | ![Setting](image/setting.png)                 | User or system settings page                  |
+| 🛍️ Shop                | ![Shop](image/shop.png)                       | Product listing and shop interface            |
+| 💳 Transactions         | ![Transactions](image/transactions.png)       | Transaction history and payment status page  |
+
 
 ---
 

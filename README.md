@@ -88,6 +88,8 @@
 
 ## ⚙️ Local Setup (XAMPP / Apache)
 
+<details>
+<summary>cick to view</summary>
 ### 🧰 Prerequisites
 
     - PHP 7.2+
@@ -128,6 +130,8 @@ Open in browser:
 
     http://localhost/Freshcery-online-grocery-store/
 
+
+<details>
 
 🤝 Contributing
 

@@ -79,7 +79,7 @@
 | 🏠 Homepage             | ![Homepage](image/homepage.png)               | Main landing/homepage                        |
 | 🔐 Login                | ![Login](image/login.png)                     | User login page                             |
 | 📦 Orders               | ![Orders](image/orders.png)                   | Order management and history page            |
-| ⚙️ Setting              | ![Setting](image/setting.png)                 | User or system settings page                  |
+| ⚙️ Setting              | ![Setting](image/settings.png)                 | User or system settings page                  |
 | 🛍️ Shop                | ![Shop](image/shop.png)                       | Product listing and shop interface            |
 | 💳 Transactions         | ![Transactions](image/transactions.png)       | Transaction history and payment status page  |
 

@@ -108,7 +108,6 @@
     
     Create a database: freshcery
     
-    Import freshcery.sql file from the project root
 
 🔐 Config Environment
 

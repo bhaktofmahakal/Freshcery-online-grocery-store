@@ -3,6 +3,8 @@
 **Freshcery** is a full-stack e-commerce platform for online grocery shopping, enhanced with AI-powered customer support. It provides users a seamless shopping experience and gives admins complete control via a secure dashboard.
 
 ![Freshcery](https://img.shields.io/badge/Freshcery-AI%20Grocery%20Platform-43aa8b?style=for-the-badge&logo=leaflet&logoColor=white)
+
+
 ![Status](https://img.shields.io/badge/status-active-brightgreen?style=flat-square)
 ![Maintained](https://img.shields.io/badge/maintained-yes-blue?style=flat-square)
 
